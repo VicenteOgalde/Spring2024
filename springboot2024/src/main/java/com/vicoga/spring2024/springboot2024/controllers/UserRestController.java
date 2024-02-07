@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.vicoga.spring2024.springboot2024.models.User;
+import com.vicoga.spring2024.springboot2024.models.dto.UserDto;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -15,13 +16,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class UserRestController {
 
     @GetMapping("/details2")
-    public Map<String,Object> details(){
+    public UserDto details(){
+        UserDto userDto =  new UserDto();
 
         User user = new User("vicente", "ogalde");
-        Map<String,Object> model= new HashMap<>();
-        model.put("title", "Hello spring 2024");
-        model.put("user", user);
-        return model;
+       
+        userDto.setUser(user);
+        userDto.setTitle("Hello spring 2024");
+
+        return userDto;
     }
 
 }
